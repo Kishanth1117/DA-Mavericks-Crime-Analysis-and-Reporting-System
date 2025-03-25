@@ -1,0 +1,280 @@
+# Comprehensive Test Cases for Crime Analysis and Reporting System (CARS)
+
+Below is a detailed test plan that covers all functionality of your Crime Analysis and Reporting System. These test cases are organized by module and include expected inputs and outputs for each operation.
+
+## 1. INCIDENT MANAGEMENT TESTING
+
+### 1.1. View All Incidents (Initial State)
+- **Action**: Select Option 1 → 6 (Add this option to your menu)
+- **Expected Output**: Display of 3 existing incidents:
+  - Incident ID: 1 - ROBBERY at First National Bank (2023-01-15)
+  - Incident ID: 2 - THEFT at Downtown Mall (2023-02-22)
+  - Incident ID: 3 - ASSAULT at City Park (2023-03-10)
+
+### 1.2. Create New Incident
+- **Action**: Select Option 1 → 1
+- **Input**:
+  - Incident Type: VANDALISM
+  - Incident Date: 2023-04-05
+  - Location: City High School
+  - Latitude: 40.7131
+  - Longitude: -74.0063
+  - Description: Graffiti on school walls
+  - Status: OPEN
+  - Victim ID: 1
+  - Suspect ID: 2
+- **Expected Output**: "Incident created successfully!"
+
+### 1.3. View Incident Details
+- **Action**: Select Option 1 → 7 (Add this option to your menu)
+- **Input**: Incident ID: 4 (newly created)
+- **Expected Output**: Complete details of the vandalism incident
+
+### 1.4. Update Incident Status
+- **Action**: Select Option 1 → 2
+- **Input**: 
+  - Incident ID: 4
+  - New Status: UNDER_INVESTIGATION
+- **Expected Output**: "Incident status updated successfully!"
+
+### 1.5. Update Incident Details
+- **Action**: Select Option 1 → 8 (Add this option to your menu)
+- **Input**:
+  - Incident ID: 4
+  - New Description: Extensive graffiti damage on school property
+  - New Suspect ID: 3
+- **Expected Output**: "Incident details updated successfully!"
+
+## 2. CASE MANAGEMENT TESTING
+
+### 2.1. View All Cases (Initial State)
+- **Action**: Select Option 2 → 4
+- **Expected Output**: Display of 2 existing cases:
+  - Case ID: 1 - Bank robberies in downtown area
+  - Case ID: 2 - Retail theft investigation
+
+### 2.2. Create New Case
+- **Action**: Select Option 2 → 1
+- **Input**:
+  - Case Description: School vandalism investigation
+  - Incident ID to add: 4
+- **Expected Output**: "Case created successfully with ID: 3"
+
+### 2.3. View Case Details
+- **Action**: Select Option 2 → 3
+- **Input**: Case ID: 3
+- **Expected Output**: Complete details of the vandalism case including the associated incident
+
+### 2.4. Update Case Details
+- **Action**: Select Option 2 → 2
+- **Input**: 
+  - Case ID: 3
+  - New Description: Ongoing school property damage investigation
+  - Update associated incidents? y
+  - Incident ID to add: 3 (add the assault incident to this case)
+- **Expected Output**: "Case details updated successfully!"
+
+### 2.5. Verify Updated Case
+- **Action**: Select Option 2 → 3
+- **Input**: Case ID: 3
+- **Expected Output**: Updated case description and both incidents (4 and 3) associated with the case
+
+## 3. REPORT GENERATION TESTING
+
+### 3.1. Generate Incident Report
+- **Action**: Select Option 3 → 1
+- **Input**: Incident ID: 4 (vandalism incident)
+- **Expected Output**: 
+  - Report generated successfully
+  - Report ID: [new_id]
+  - Incident ID: 4
+  - Reporting Officer ID: [officer_id]
+  - Report Date: [current_date]
+  - Status: DRAFT
+  - Details: Report containing vandalism incident information
+
+### 3.2. Generate Case Summary Report
+- **Action**: Select Option 3 → 2 (Add this option to your menu)
+- **Input**: Case ID: 3
+- **Expected Output**: 
+  - Case summary report generated
+  - Details of all incidents in the case
+  - Statistics on incident types, statuses, etc.
+
+### 3.3. Generate Monthly Crime Statistics
+- **Action**: Select Option 3 → 3 (Add this option to your menu)
+- **Input**:
+  - Month: 3 (March)
+  - Year: 2023
+- **Expected Output**:
+  - Crime statistics for March 2023
+  - Number of incidents by type
+  - Number of incidents by status
+  - Geographic distribution
+
+### 3.4. View All Reports
+- **Action**: Select Option 3 → 4 (Add this option to your menu)
+- **Expected Output**: List of all reports in the system, including the newly generated report
+
+## 4. SEARCH OPERATIONS TESTING
+
+### 4.1. Search Incidents by Date Range
+- **Action**: Select Option 4 → 1
+- **Input**:
+  - Start Date: 2023-01-01
+  - End Date: 2023-03-15
+- **Expected Output**: List of incidents between Jan 1 and Mar 15, 2023 (should include the first 3 incidents)
+
+### 4.2. Search Incidents by Type
+- **Action**: Select Option 4 → 2
+- **Input**: Incident Type: ROBBERY
+- **Expected Output**: List of robbery incidents (should include incident ID 1)
+
+### 4.3. Search by Location
+- **Action**: Select Option 4 → 3 (Add this option to your menu)
+- **Input**: Location keyword: Park
+- **Expected Output**: List of incidents at locations containing "Park" (should include incident ID 3)
+
+### 4.4. Search by Status
+- **Action**: Select Option 4 → 4 (Add this option to your menu)
+- **Input**: Status: UNDER_INVESTIGATION
+- **Expected Output**: List of incidents with UNDER_INVESTIGATION status (should include incident IDs 1 and 4)
+
+### 4.5. Search by Geographic Area
+- **Action**: Select Option 4 → 5 (Add this option to your menu)
+- **Input**:
+  - Center Latitude: 40.7130
+  - Center Longitude: -74.0060
+  - Radius (km): 1
+- **Expected Output**: List of incidents within 1km of the specified coordinates
+
+## 5. EVIDENCE MANAGEMENT TESTING
+
+### 5.1. Add Evidence to Incident
+- **Action**: Select Option 5 → 1 (Add this option to your menu)
+- **Input**:
+  - Incident ID: 4
+  - Description: Spray paint cans
+  - Location Found: Behind school dumpster
+- **Expected Output**: "Evidence added successfully!"
+
+### 5.2. View Evidence for Incident
+- **Action**: Select Option 5 → 2 (Add this option to your menu)
+- **Input**: Incident ID: 4
+- **Expected Output**: List of evidence items for incident 4, including the newly added spray paint cans
+
+### 5.3. Update Evidence Details
+- **Action**: Select Option 5 → 3 (Add this option to your menu)
+- **Input**:
+  - Evidence ID: [new_evidence_id]
+  - New Description: Multiple spray paint cans with fingerprints
+- **Expected Output**: "Evidence updated successfully!"
+
+### 5.4. View All Evidence
+- **Action**: Select Option 5 → 4 (Add this option to your menu)
+- **Expected Output**: List of all evidence items in the system
+
+## 6. VICTIM AND SUSPECT MANAGEMENT TESTING
+
+### 6.1. Add New Victim
+- **Action**: Select Option 6 → 1 (Add this option to your menu)
+- **Input**:
+  - First Name: Thomas
+  - Last Name: Wilson
+  - Date of Birth: 1990-05-15
+  - Gender: Male
+  - Address: 500 Park Avenue
+  - Phone Number: 555-789-1234
+- **Expected Output**: "Victim added successfully with ID: 4"
+
+### 6.2. Add New Suspect
+- **Action**: Select Option 6 → 3 (Add this option to your menu)
+- **Input**:
+  - First Name: Kevin
+  - Last Name: Jones
+  - Date of Birth: 1985-08-20
+  - Gender: Male
+  - Address: 123 Hidden Lane
+  - Phone Number: 555-456-7890
+- **Expected Output**: "Suspect added successfully with ID: 4"
+
+### 6.3. View Victim Details
+- **Action**: Select Option 6 → 2 (Add this option to your menu)
+- **Input**: Victim ID: 4
+- **Expected Output**: Complete details of Thomas Wilson
+
+### 6.4. View Suspect Details
+- **Action**: Select Option 6 → 4 (Add this option to your menu)
+- **Input**: Suspect ID: 4
+- **Expected Output**: Complete details of Kevin Jones
+
+### 6.5. Update Victim Information
+- **Action**: Select Option 6 → 5 (Add this option to your menu)
+- **Input**:
+  - Victim ID: 4
+  - New Address: 501 Park Avenue, Apt 3B
+  - New Phone Number: 555-789-5678
+- **Expected Output**: "Victim information updated successfully!"
+
+## 7. ERROR HANDLING TESTING
+
+### 7.1. Invalid Incident ID
+- **Action**: Try to update incident status
+- **Input**: Incident ID: 999
+- **Expected Output**: "Error: Incident with ID 999 not found"
+
+### 7.2. Invalid Date Format
+- **Action**: Try to create new incident
+- **Input**: Incident Date: 2023/05/01 (wrong format)
+- **Expected Output**: "Invalid date format. Please use yyyy-MM-dd format."
+
+### 7.3. Invalid Incident Type
+- **Action**: Try to create new incident
+- **Input**: Incident Type: MURDER (not in enum)
+- **Expected Output**: "Invalid incident type. Please enter one of the available types."
+
+### 7.4. Invalid Status
+- **Action**: Try to update incident status
+- **Input**: Status: PENDING (not in enum)
+- **Expected Output**: "Invalid status. Please enter one of the available statuses."
+
+### 7.5. Case Not Found
+- **Action**: Try to view case details
+- **Input**: Case ID: 999
+- **Expected Output**: "Error: Case with ID 999 not found"
+
+### 7.6. Database Connection Error
+- **Action**: Simulate database connection failure (by providing invalid database credentials)
+- **Expected Output**: Appropriate error message about database connection failure
+
+## 8. DATA INTEGRITY TESTING
+
+### 8.1. Cascade Delete Test
+- **Action**: Remove a victim associated with incidents
+- **Input**: Victim ID: 1
+- **Expected Output**: Warning about associated incidents and confirmation prompt
+
+### 8.2. Duplicate Prevention Test
+- **Action**: Create a case with duplicate incident associations
+- **Input**:
+  - Case Description: Test case
+  - Incident ID: 1
+  - Add another incident? y
+  - Incident ID: 1 (same as before)
+- **Expected Output**: "Incident already associated with this case"
+
+### 8.3. Date Range Validation
+- **Action**: Search incidents with invalid date range
+- **Input**:
+  - Start Date: 2023-05-01
+  - End Date: 2023-04-01 (before start date)
+- **Expected Output**: "End date must be after start date"
+
+## VERIFICATION STEPS:
+1. Each operation should return appropriate success/error messages
+2. Database should be updated correctly after each operation
+3. All relationships between entities should be maintained
+4. All error cases should be handled gracefully
+5. Data integrity should be preserved throughout testing
+
+This comprehensive test plan covers all the core functionality of your Crime Analysis and Reporting System and includes tests for error handling and data integrity. It will help ensure that your system works correctly and handles edge cases appropriately.
